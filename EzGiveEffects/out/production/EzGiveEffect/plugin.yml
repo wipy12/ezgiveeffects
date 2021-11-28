@@ -1,0 +1,15 @@
+name: EzGiveEffects
+version: 1.0
+main: ezieffects.Main
+description: EzGiveEffects
+author: Wipy
+prefix: EzGiveEffects
+commands:
+  giveitem:
+    description: The player gets a wand 
+    usage: /giveitem <itemname>
+
+permissions:
+  giveitem.give:
+    description: Use '/giveitem' command
+    default: op

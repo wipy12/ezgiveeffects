@@ -1,0 +1,15 @@
+#duration by tick
+#20tick = 1sec
+
+items:
+  - speedstick
+
+speedstick:
+  name: 'Speed Stick'
+  lores:
+    - '------------'
+    - 'OHYEAAAAAAAA'
+    - '------------'
+  effect: 'speed'
+  level: 2
+  duration: 300

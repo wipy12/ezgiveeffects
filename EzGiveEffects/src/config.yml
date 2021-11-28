@@ -1,0 +1,7 @@
+consoleUse: 'Use in the game!'
+helpMessage: '&6Use: &e/giveitem &a(item_name)'
+itemsMessage: '&6Items: &e%number_of_items%'
+itemListingColor: '&c'
+configurationError: '&4The item configuration is not set correctly'
+itemError: '&4There is no item with this name'
+permissionError: '&4You dont have permission to use this command!'
