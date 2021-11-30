@@ -2,6 +2,10 @@ package ezieffects.events;
 
 import ezieffects.commands.Commands;
 import ezieffects.Files;
+
+import java.util.List;
+
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,16 +23,27 @@ public class Events implements Listener{
 	@EventHandler
 	public static void onRightClick(PlayerInteractEvent event) {
 		if (event.getItem() != null) {
-			if (Commands.requested_item) {
-				effect = Files.items.getString(Commands.arg_null + ".effect").toUpperCase();
-				duration = Files.items.getInt(Commands.arg_null + ".duration");
-				level = Files.items.getInt(Commands.arg_null + ".level") - 1;
-				display_name = Files.items.getString(Commands.arg_null + ".name");
 
-				if (event.getItem().getItemMeta().equals(Commands.wand.getItemMeta())) {
-					Player player = event.getPlayer();
+			Player player = event.getPlayer();
+			ItemStack item_in_hand = player.getItemInHand();
+			String item_name = item_in_hand.getItemMeta().getDisplayName();
+			List<String> item_lore = item_in_hand.getItemMeta().getLore();
+			String lore_1 = item_lore.get(0);
+			
+			String real_item_name;
+			
+			for(String s : Files.items.getStringList("items")) {
+				if ((item_name.equalsIgnoreCase(Files.items.getString(s + ".name"))) & (lore_1.equalsIgnoreCase(Files.items.getStringList(s + ".lores").get(0)))) {
+					real_item_name = s;
+					effect = Files.items.getString(real_item_name + ".effect").toUpperCase();
+					duration = Files.items.getInt(real_item_name + ".duration");
+					level = Files.items.getInt(real_item_name + ".level") - 1;
+					display_name = Files.items.getString(real_item_name + ".name");
+
+					
 					player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(effect), duration, level));
 					event.getItem().setAmount(player.getItemInHand().getAmount()-1);
+					
 				}
 			}
 

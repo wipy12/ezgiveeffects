@@ -63,12 +63,12 @@ public class Commands implements CommandExecutor {
 								ItemStack item = new ItemStack(Material.STICK);
 								ItemMeta meta = item.getItemMeta();
 	
-								meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', Files.items.getString(arg_null + ".name")));
+								meta.setDisplayName(Files.items.getString(arg_null + ".name"));
 	
 								List<String> lore = new ArrayList<>();
 	
 								for(String s : Files.items.getStringList(arg_null + ".lores")) {
-									lore.add(ChatColor.translateAlternateColorCodes('&', s));
+									lore.add(s);
 								}
 								meta.setLore(lore);
 								meta.addEnchant(Enchantment.LUCK, 1, false);
